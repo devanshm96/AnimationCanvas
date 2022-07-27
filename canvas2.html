@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyCanvas</title>
+    <style>
+        canvas {
+            border: #000000 1px solid;
+        }
+    </style>
+    <script>
+        var c;
+        var ctx;
+        function init() {
+            c = document.getElementById("myCanvas");
+            ctx = c.getContext('2d');
+            draw();
+        }
+
+        function draw() {
+            var posX =0;
+            var posY =0;
+
+            setInterval(function(){
+                posX+=1;
+                posY+=1;
+                
+                ctx.fillStyle="Black";
+                ctx.fillRect(0,0,c.width,c.height);
+                
+                ctx.fillStyle="White";
+                ctx.beginPath();
+                ctx.arc(posX,120,55,0,Math.PI*2);
+                ctx.fill();
+
+                ctx.fillStyle="red";
+                ctx.beginPath();
+                ctx.arc(150,posY,78,0,Math.PI*2);
+                ctx.fill();
+
+                ctx.fillStyle="blue";
+                ctx.beginPath();
+                ctx.arc(350,posY,38,0,Math.PI*2);
+                ctx.fill();
+
+                //ctx.clearRect(0,0,c.width,c.height);
+                //ctx.fillStyle="Red";
+                //ctx.fillRect(posX,0,50,50);//with every loop pos of x will change
+            },17)//speed of animations 30 miliisec
+            //anythin in the setInterval will run fo 30ms
+        }
+    </script>
+</head>
+<body onload="init()">
+    <canvas id="myCanvas" width="600" height="400">
+        <p>Sorry, this browser does not support canvas</p>
+    </canvas>
+</body>
+</html>
